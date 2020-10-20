@@ -1,10 +1,5 @@
 <script lang="ts">
-  import { xlink_attr } from "svelte/internal";
-
   import { Icon } from "proi-ui-icons";
-  import { Button } from "proi-ui";
-  import { Col, Container, Row, Card } from "sveltestrap";
-
   export let zone_name: string;
   export let current_temp: number;
   export let zone_number: number;
@@ -12,7 +7,7 @@
   export let low_set: number;
   export let high_set: number;
 
-  function clicked(): none {
+  function clicked() {
     console.log("button clicked");
   }
 </script>
@@ -21,36 +16,33 @@
   #zoneName {
     margin: 0 auto;
   }
+
   #zoneNumber {
     margin: 0 auto;
   }
 
-  #currentTemp {
-    margin: 0 auto;
-  }
-  #setNum {
-    text-align: right;
-  }
   #setRange {
     text-align: right;
   }
+
   .setTemp {
     margin: 0 auto;
   }
+
+  .currentTemp {
+    text-align: center;
+    margin: 0 auto;
+  }
+
   .col-6 {
     width: 50%;
   }
-  .col-3 {
-    width: 25%;
-  }
-  .padding-0 {
-    padding-right: 0;
-    padding-left: 0;
-  }
+
   .row {
     display: flex;
     width: 100%;
   }
+
   .row::after {
     clear: both;
     content: "";
@@ -82,10 +74,10 @@
       <div class="row">
         <div class="col-6">
           <div class="row">
-            <h1 id="currentTemp">Current Temp</h1>
+            <h1 class="currentTemp">Current Temp</h1>
           </div>
           <div class="row">
-            <h1 id="currentTemp">{current_temp}</h1>
+            <h1 class="currentTemp">{current_temp}</h1>
           </div>
         </div>
         <div class="col-6">
@@ -93,40 +85,33 @@
             <h1 class="setTemp">Set Temp</h1>
           </div>
           <div class="row">
-            <div class="col-6 padding-0">
-              <h1 class="setTemp" id="setNum">{set_temp}</h1>
+            <input
+              class="setTemp"
+              type="number"
+              bind:value={set_temp}
+              min={low_set}
+              max={high_set} />
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <p id="setRange">set low</p>
             </div>
             <div class="col-6">
-              <button on:click={clicked}>
-                <Icon type="arrowUp" color="red" />
-              </button>
-              <button on:click={clicked}>
-                <Icon type="arrowDown" color="blue" />
-              </button>
+              <p id="setRange">set high</p>
             </div>
           </div>
           <div class="row">
-            <div class="col-3 padding-0">
-              <p id="setRange">set low: {low_set}</p>
+            <div class="col-6">
+              <input
+                type="number"
+                style="width:100%;height:100%;"
+                bind:value={low_set} />
             </div>
-            <div class="col-3">
-              <button on:click={clicked}>
-                <Icon type="arrowUp" color="red" />
-              </button>
-              <button on:click={clicked}>
-                <Icon type="arrowDown" color="blue" />
-              </button>
-            </div>
-            <div class="col-3 padding-0">
-              <p id="setRange">set high: {high_set}</p>
-            </div>
-            <div class="col-3">
-              <button on:click={clicked}>
-                <Icon type="arrowUp" color="red" />
-              </button>
-              <button on:click={clicked}>
-                <Icon type="arrowDown" color="blue" />
-              </button>
+            <div class="col-6">
+              <input
+                type="number"
+                style="width:100%;height:100%;"
+                bind:value={high_set} />
             </div>
           </div>
         </div>
