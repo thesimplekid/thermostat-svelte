@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { Icon } from "proi-ui-icons";
   export let zone_name: string;
   export let current_temp: number;
   export let zone_number: number;
@@ -7,8 +6,34 @@
   export let low_set: number;
   export let high_set: number;
 
-  function clicked() {
-    console.log("button clicked");
+  const delayForPost: number = 5000;
+
+  var setTempTimer = null;
+  var setHighTimer = null;
+  var setLowTimer = null;
+
+  async function changeSetTemp() {
+    clearTimeout(setTempTimer);
+    setTempTimer = setTimeout(function () {
+      //todo send temp
+      console.log(set_temp);
+    }, delayForPost);
+  }
+
+  function changeLowSet() {
+    clearTimeout(setLowTimer);
+    setLowTimer = setTimeout(function () {
+      //todo send temp
+      console.log(low_set);
+    }, delayForPost);
+  }
+
+  function changeHighSet() {
+    clearTimeout(setHighTimer);
+    setHighTimer = setTimeout(function () {
+      //todo send temp
+      console.log(high_set);
+    }, delayForPost);
   }
 </script>
 
@@ -90,7 +115,8 @@
               type="number"
               bind:value={set_temp}
               min={low_set}
-              max={high_set} />
+              max={high_set}
+              on:change={changeSetTemp} />
           </div>
           <div class="row">
             <div class="col-6">
@@ -105,13 +131,15 @@
               <input
                 type="number"
                 style="width:100%;height:100%;"
-                bind:value={low_set} />
+                bind:value={low_set}
+                on:change={changeLowSet} />
             </div>
             <div class="col-6">
               <input
                 type="number"
                 style="width:100%;height:100%;"
-                bind:value={high_set} />
+                bind:value={high_set}
+                on:change={changeHighSet} />
             </div>
           </div>
         </div>
