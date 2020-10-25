@@ -14,25 +14,49 @@
 
   async function changeSetTemp() {
     clearTimeout(setTempTimer);
-    setTempTimer = setTimeout(function () {
-      //todo send temp
-      console.log(set_temp);
+    setTempTimer = setTimeout(async function () {
+      const res = await fetch(
+        `http://10.30.30.92:3000/temperatures/updateSetTemp/zone/${zone_number}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ set_temp: set_temp }),
+        }
+      );
     }, delayForPost);
   }
 
-  function changeLowSet() {
+  async function changeLowSet() {
     clearTimeout(setLowTimer);
-    setLowTimer = setTimeout(function () {
-      //todo send temp
-      console.log(low_set);
+    setLowTimer = setTimeout(async function () {
+      const res = await fetch(
+        `http://10.30.30.92:3000/temperatures/updateLowSet/zone/${zone_number}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ low_set: low_set }),
+        }
+      );
     }, delayForPost);
   }
 
-  function changeHighSet() {
+  async function changeHighSet() {
     clearTimeout(setHighTimer);
-    setHighTimer = setTimeout(function () {
-      //todo send temp
-      console.log(high_set);
+    setHighTimer = setTimeout(async function () {
+      const res = await fetch(
+        `http://10.30.30.92:3000/temperatures/updateHighSet/zone/${zone_number}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ high_set: high_set }),
+        }
+      );
     }, delayForPost);
   }
 </script>

@@ -4,7 +4,8 @@
   let zones = [];
 
   onMount(async () => {
-    const res = await fetch("http://10.30.30.92:3000/temperatures/home");
+    console.log(process.env.BASE_URL);
+    const res = await fetch(process.env.BASE_URL + "/home");
     zones = await res.json();
   });
 </script>
@@ -13,6 +14,7 @@
 </style>
 
 <main>
+  <h1>Welcome Home</h1>
   <ul>
     {#each zones as { ...zone }}
       <Zoneinfo {...zone} />
