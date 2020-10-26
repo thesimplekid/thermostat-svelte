@@ -6,7 +6,7 @@
   export let low_set: number;
   export let high_set: number;
 
-  const delayForPost: number = 5000;
+  const delayForPost: number = 3000;
 
   var setTempTimer = null;
   var setHighTimer = null;
@@ -16,7 +16,7 @@
     clearTimeout(setTempTimer);
     setTempTimer = setTimeout(async function () {
       const res = await fetch(
-        `http://10.30.30.92:3000/temperatures/updateSetTemp/zone/${zone_number}`,
+        process.env.BASE_URL + `/updateSetTemp/?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
@@ -32,7 +32,7 @@
     clearTimeout(setLowTimer);
     setLowTimer = setTimeout(async function () {
       const res = await fetch(
-        `http://10.30.30.92:3000/temperatures/updateLowSet/zone/${zone_number}`,
+        process.env.BASE_URL + `/updateLowSet/?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
@@ -48,7 +48,7 @@
     clearTimeout(setHighTimer);
     setHighTimer = setTimeout(async function () {
       const res = await fetch(
-        `http://10.30.30.92:3000/temperatures/updateHighSet/zone/${zone_number}`,
+        process.env.BASE_URL + `/updateHighSet/?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
