@@ -137,6 +137,7 @@
             <input
               class="setTemp"
               type="number"
+              style="width:30%;height:100%;"
               bind:value={set_temp}
               min={low_set}
               max={high_set}
