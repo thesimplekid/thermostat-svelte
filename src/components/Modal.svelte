@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { createEventDispatcher, onDestroy } from "svelte";
+  import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
   const close = () => dispatch("close");
@@ -40,7 +40,7 @@
     overflow: hidden;
   }
   div.content {
-    max-height: 50vh;
+    max-height: 100%;
     overflow: auto;
   }
 </style>

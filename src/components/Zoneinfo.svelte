@@ -111,64 +111,62 @@
   }
 </style>
 
-<main>
-  <div class="card">
-    <div class="container">
-      <div class="row">
-        <h1 id="zoneName">{zone_name}</h1>
+<div class="card">
+  <div class="container">
+    <div class="row">
+      <h1 id="zoneName">{zone_name}</h1>
+    </div>
+    <div class="row">
+      <h2 id="zoneNumber">Zone Number: {zone_number}</h2>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <div class="row">
+          <h1 class="currentTemp">Current Temp</h1>
+        </div>
+        <div class="row">
+          <h1 class="currentTemp">{current_temp}</h1>
+        </div>
       </div>
-      <div class="row">
-        <h2 id="zoneNumber">Zone Number: {zone_number}</h2>
-      </div>
-      <div class="row">
-        <div class="col-6">
-          <div class="row">
-            <h1 class="currentTemp">Current Temp</h1>
+      <div class="col-6">
+        <div class="row">
+          <h1 class="setTemp">Set Temp</h1>
+        </div>
+        <div class="row">
+          <input
+            class="setTemp"
+            type="number"
+            style="width:30%;height:100%;"
+            bind:value={set_temp}
+            min={low_set}
+            max={high_set}
+            on:change={changeSetTemp} />
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <p id="setRange">set low</p>
           </div>
-          <div class="row">
-            <h1 class="currentTemp">{current_temp}</h1>
+          <div class="col-6">
+            <p id="setRange">set high</p>
           </div>
         </div>
-        <div class="col-6">
-          <div class="row">
-            <h1 class="setTemp">Set Temp</h1>
-          </div>
-          <div class="row">
+        <div class="row">
+          <div class="col-6">
             <input
-              class="setTemp"
               type="number"
-              style="width:30%;height:100%;"
-              bind:value={set_temp}
-              min={low_set}
-              max={high_set}
-              on:change={changeSetTemp} />
+              style="width:100%;height:100%;"
+              bind:value={low_set}
+              on:change={changeLowSet} />
           </div>
-          <div class="row">
-            <div class="col-6">
-              <p id="setRange">set low</p>
-            </div>
-            <div class="col-6">
-              <p id="setRange">set high</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <input
-                type="number"
-                style="width:100%;height:100%;"
-                bind:value={low_set}
-                on:change={changeLowSet} />
-            </div>
-            <div class="col-6">
-              <input
-                type="number"
-                style="width:100%;height:100%;"
-                bind:value={high_set}
-                on:change={changeHighSet} />
-            </div>
+          <div class="col-6">
+            <input
+              type="number"
+              style="width:100%;height:100%;"
+              bind:value={high_set}
+              on:change={changeHighSet} />
           </div>
         </div>
       </div>
     </div>
   </div>
-</main>
+</div>

@@ -1,15 +1,34 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Zoneinfo from "./components/Zoneinfo.svelte";
-  import Modal from "./Modal.svelte";
+  import Modal from "./components/Modal.svelte";
+  import AddZone from "./components/addZone.svelte";
 
   let zones = [];
-  let showModal = false;
+  export let showModal = false;
 
   onMount(async () => {
     const res = await fetch(process.env.BASE_URL + "/home");
     zones = await res.json();
   });
+
+  async function handleSubmitted(event) {
+    const zoneInfo = event.detail.zoneInfo;
+
+    const res = await fetch(process.env.BASE_URL + "/addZone", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(zoneInfo),
+    });
+
+    if (res.ok) {
+      showModal = false;
+    } else {
+      alert("Zone Settings not saved");
+    }
+  }
 </script>
 
 <style>
@@ -27,7 +46,9 @@
 
 {#if showModal}
   <Modal on:close={() => (showModal = false)}>
-    <h1 slot="header">Tester header info</h1>
-    <h1 slot="content">content stuff</h1>
+    <h1 slot="header">Add a Zone</h1>
+    <p slot="content">
+      <AddZone on:submitted={handleSubmitted} />
+    </p>
   </Modal>
 {/if}
