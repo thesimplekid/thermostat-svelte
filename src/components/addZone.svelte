@@ -4,6 +4,18 @@
 
   const dispatch = createEventDispatcher();
 
+  function getNumList(sensorIds: string): number[] {
+    const listOfSensors = sensorIds.split(",");
+    return listOfSensors
+      .map(function (id) {
+        const numId = Number(id);
+        if (numId > 0) {
+          return numId;
+        }
+      })
+      .filter((val) => val != null);
+  }
+
   const formProps = {
     initialValues: {
       zone_name: "",
@@ -14,6 +26,10 @@
       sensor_ids: "",
     },
     onSubmit: (values: JSON) => {
+      //TODO abstract this
+
+      values["sensor_ids"] = getNumList(values["sensor_ids"]);
+
       dispatch("submitted", {
         zoneInfo: values,
       });
