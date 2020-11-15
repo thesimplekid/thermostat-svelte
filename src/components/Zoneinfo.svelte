@@ -16,7 +16,7 @@
     clearTimeout(setTempTimer);
     setTempTimer = setTimeout(async function () {
       const res = await fetch(
-        process.env.BASE_URL + `/updateSetTemp/?zone_num=${zone_number}`,
+        process.env.BASE_URL + `/bumpSetTemp?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
@@ -32,7 +32,7 @@
     clearTimeout(setLowTimer);
     setLowTimer = setTimeout(async function () {
       const res = await fetch(
-        process.env.BASE_URL + `/updateLowSet/?zone_num=${zone_number}`,
+        process.env.BASE_URL + `/updateLowSet?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
@@ -48,7 +48,7 @@
     clearTimeout(setHighTimer);
     setHighTimer = setTimeout(async function () {
       const res = await fetch(
-        process.env.BASE_URL + `/updateHighSet/?zone_num=${zone_number}`,
+        process.env.BASE_URL + `/updateHighSet?zone_num=${zone_number}`,
         {
           method: "PUT",
           headers: {
