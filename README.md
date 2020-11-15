@@ -23,7 +23,7 @@ To create an optimised version of the app:
 npm run build
 ```
 
-The backend for this thermostat can be found at [https://github.com/thesimplekid/thermostat-base-station] (https://github.com/thesimplekid/thermostat-base-station)
+The backend for this thermostat can be found at [https://github.com/thesimplekid/thermostat-base-station](https://github.com/thesimplekid/thermostat-base-station)
 
 This is still in development
 
