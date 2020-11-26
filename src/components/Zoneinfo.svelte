@@ -1,10 +1,15 @@
 <script lang="ts">
+  import Modal from "./Modal.svelte";
+  import EditSetTemps from "./editSetTemps.svelte";
+
   export let zone_name: string;
   export let current_temp: number;
   export let zone_number: number;
   export let set_temp: number;
   export let low_set: number;
   export let high_set: number;
+
+  export let showEditTempsModal = false;
 
   const delayForPost: number = 3000;
 
@@ -58,6 +63,14 @@
         }
       );
     }, delayForPost);
+  }
+
+  async function editZone() {
+    alert("edit Zone");
+  }
+
+  async function editSetTempsSubmitted() {
+    //const res = await fetch(process.env.BASE_URL+`/setTemps?zone_num=${zone_number}`)
   }
 </script>
 
@@ -115,6 +128,7 @@
   <div class="container">
     <div class="row">
       <h1 id="zoneName">{zone_name}</h1>
+      <button on:click={editZone}>Edit Zone</button>
     </div>
     <div class="row">
       <h2 id="zoneNumber">Zone Number: {zone_number}</h2>
@@ -141,6 +155,7 @@
             min={low_set}
             max={high_set}
             on:change={changeSetTemp} />
+          <button on:click={() => (showEditTempsModal = true)}>Edit Set Temps</button>
         </div>
         <div class="row">
           <div class="col-6">
@@ -170,3 +185,14 @@
     </div>
   </div>
 </div>
+
+{#if showEditTempsModal}
+  <Modal on:close={() => (showEditTempsModal = false)}>
+    <h1 slot="header">Edit set Temps</h1>
+    <p slot="content">
+      <EditSetTemps
+        zone_num={zone_number}
+        on:submitted={editSetTempsSubmitted} />
+    </p>
+  </Modal>
+{/if}

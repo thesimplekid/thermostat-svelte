@@ -3,7 +3,6 @@
   import Zoneinfo from "./components/Zoneinfo.svelte";
   import Modal from "./components/Modal.svelte";
   import AddZone from "./components/addZone.svelte";
-  import { group_outros } from "svelte/internal";
 
   let zones = [];
   export let showModal = false;
