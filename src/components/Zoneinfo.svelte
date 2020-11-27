@@ -17,6 +17,10 @@
   var setHighTimer = null;
   var setLowTimer = null;
 
+  function closeTemps() {
+    showEditTempsModal = false;
+  }
+
   async function changeSetTemp() {
     clearTimeout(setTempTimer);
     setTempTimer = setTimeout(async function () {
@@ -192,6 +196,7 @@
     <p slot="content">
       <EditSetTemps
         zone_num={zone_number}
+        {closeTemps}
         on:submitted={editSetTempsSubmitted} />
     </p>
   </Modal>

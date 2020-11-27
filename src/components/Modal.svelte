@@ -60,6 +60,6 @@
       <slot name="content" />
     </div>
 
-    <slot name="footer"><button on:click={close}>close modal</button></slot>
+    <!--  <slot name="footer"><button on:click={close}>close modal</button></slot> -->
   </div>
 </div>

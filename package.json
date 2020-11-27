@@ -32,6 +32,7 @@
     "proi-ui-icons": "0.0.3",
     "sirv-cli": "^1.0.0",
     "svelte-forms-lib": "^1.2.2",
+    "svelte-time-picker": "^1.0.4",
     "sveltestrap": "^3.9.6"
   }
 }
